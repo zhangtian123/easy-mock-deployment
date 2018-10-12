@@ -15,10 +15,12 @@ Deploying easy-mock in the intranet server
 
 - create symbolic link 
 > ln -s /usr/local/nodejs/bin/node /usr/local/bin
+
 > ln -s /usr/local/nodejs/bin/npm /usr/local/bin
 
 - test 
 > node -v
+
 > npm -v
 
 
@@ -28,13 +30,19 @@ Deploying easy-mock in the intranet server
 
 - yum source with mongodb addition 
 > cd /etc/yum.repos.d/
+
 > vim mongodb-3.4.repo
 - copy the following words to mongodb-3.4.repo,you can change gpgcheck to 0 to avoid gpg validation 
 >[mongodb-org-3.4] 
+
 >name=MongoDB Repository 
+
 >baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/ 
+
 >gpgcheck=1 
+
 >enabled=1 
+
 >gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
 
 - install 
@@ -42,9 +50,13 @@ Deploying easy-mock in the intranet server
 
 - create database storage and log folder 
 > mkdir /data
+
 > mkdir /data/db
+
 > mkdir /data/logs
+
 > mkdir /data/logs/mongodb
+
 > mkdir /data/logs/mongodb/logs
 
 - start mongodb 
@@ -52,6 +64,7 @@ Deploying easy-mock in the intranet server
 
 - create database
 > mongo
+
 > use easymockdb
 
 # Abnormal stop can cause startup error
@@ -59,27 +72,38 @@ Deploying easy-mock in the intranet server
 - uninstall-->reinstall 
 - delete mongod.lock in /data/db and logs
 > yum list installed | grep mongo [find installation packages related to mongodb]
+
 > yum erase XXX [delete related packages]
+
 > reinstall
 
 # install redis
 > wget http://download.redis.io/releases/redis-4.0.2.tar.gz
+
 > tar xzf redis-4.0.2.tar.gz
+
 > cd redis-4.0.2
+
 > make
+
 > make install
+
 > cd /usr/local/bin
+
 > redis-server   //startup
 
 # deploy easy-mock
 
 - download project 
 > git clone https://github.com/easy-mock/easy-mock.git
+
 > npm install
 
 - configure && build 
 > cd easy-mock
+
 > cp config/default.json config/local.json
+
 > vi config/local.json
 "db": "mongodb://localhost:27017/easymockdb",
 
@@ -94,12 +118,14 @@ DONE Compiled successfully in 476ms [start successfully]
 # Using PM2 to ensure continuous working of the project
 
 - install 
-- npm i -g pm2
+> npm i -g pm2
 
 - create symbolic link or it will prompt that the PM2 command does not exist[maybe😀] 
-- ln   -s   xxx[path of pm2]   /usr/local/bin
-- pm2 start app.js [start]
-- pm2 stop app.js [stop]
+> ln   -s   xxx[path of pm2]   /usr/local/bin
+
+> pm2 start app.js [start]
+
+> pm2 stop app.js [stop]
 
 
 ** if you want to deploy it on virtual machine,some configurations is needed **
