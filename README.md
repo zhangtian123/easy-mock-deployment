@@ -1,7 +1,7 @@
 # easy-mock-deployment
 Deploying easy-mock in the intranet server
 
-* 环境搭建：nodejs-->v8.9.0,mongodb-->v3.4,redis-->v4.0.2 *
+- 环境搭建：nodejs-->v8.9.0,mongodb-->v3.4,redis-->v4.0.2 
 
 
 # install nodejs
