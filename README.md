@@ -106,7 +106,7 @@ Deploying easy-mock in the intranet server
 
 > vi config/local.json
 
-"db": "mongodb://localhost:27017/easymockdb",
+> "db": "mongodb://localhost:27017/easymockdb",
 
 - build 
 > npm run build
