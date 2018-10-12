@@ -1,7 +1,7 @@
 # easy-mock-deployment
 Deploying easy-mock in the intranet server
 
-- 环境搭建：nodejs-->v8.9.0,mongodb-->v3.4,redis-->v4.0.2 
+# 环境搭建：nodejs-->v8.9.0,mongodb-->v3.4,redis-->v4.0.2 
 
 
 # install nodejs
@@ -10,11 +10,11 @@ Deploying easy-mock in the intranet server
 > cd /usr/local/
 > mv node-v8.9.0-linux-x64/ nodejs
 
-** create symbolic link **
+- create symbolic link 
 > ln -s /usr/local/nodejs/bin/node /usr/local/bin
 > ln -s /usr/local/nodejs/bin/npm /usr/local/bin
 
-* test *
+- test 
 > node -v
 > npm -v
 
@@ -26,7 +26,7 @@ Deploying easy-mock in the intranet server
 - yum source with mongodb addition **
 > cd /etc/yum.repos.d/
 > vim mongodb-3.4.repo
-** copy the following words to mongodb-3.4.repo,you can change gpgcheck to 0 to avoid gpg validation **
+- copy the following words to mongodb-3.4.repo,you can change gpgcheck to 0 to avoid gpg validation 
 [mongodb-org-3.4] 
 name=MongoDB Repository 
 baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/ 
@@ -34,20 +34,20 @@ gpgcheck=1
 enabled=1 
 gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
 
-- install **
+- install 
 > yum install -y mongodb-org
 
-- create database storage and log folder **
+- create database storage and log folder 
 > mkdir /data
 > mkdir /data/db
 > mkdir /data/logs
 > mkdir /data/logs/mongodb
 > mkdir /data/logs/mongodb/logs
 
-- start mongodb **
+- start mongodb 
 > mongod --fork --logpath=/data/logs/mongodb/logs/mogondb.log
 
-- create database **
+- create database
 > mongo
 > use easymockdb
 
@@ -70,30 +70,30 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
 
 # deploy easy-mock
 
-** download project **
+- download project 
 > git clone https://github.com/easy-mock/easy-mock.git
 > npm install
 
-** configure && build **
+- configure && build 
 > cd easy-mock
 > cp config/default.json config/local.json
 > vi config/local.json
 "db": "mongodb://localhost:27017/easymockdb",
 
-** build **
+- build 
 > npm run build
 
-** startup **
+- startup 
 > npm run dev
 DONE Compiled successfully in 476ms [start successfully]
 
 
 # Using PM2 to ensure continuous working of the project
 
-** install **
+- install 
 - npm i -g pm2
 
-** create symbolic link or it will prompt that the PM2 command does not exist[maybe😀] **
+- create symbolic link or it will prompt that the PM2 command does not exist[maybe😀] 
 - ln   -s   xxx[path of pm2]   /usr/local/bin
 - pm2 start app.js [start]
 - pm2 stop app.js [stop]
