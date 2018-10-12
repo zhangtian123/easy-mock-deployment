@@ -70,7 +70,7 @@ Deploying easy-mock in the intranet server
 # Abnormal stop can cause startup error
 - repair：delete mongod.lock in /data/db and logs,then start mongodb in --repair way [😳failed,actually i don't know how to repair it]
 - uninstall-->reinstall 
-- delete mongod.lock in /data/db and logs
+> delete mongod.lock in /data/db and logs
 > yum list installed | grep mongo [find installation packages related to mongodb]
 
 > yum erase XXX [delete related packages]
@@ -99,12 +99,13 @@ Deploying easy-mock in the intranet server
 
 > npm install
 
-- configure && build 
+- configure 
 > cd easy-mock
 
 > cp config/default.json config/local.json
 
 > vi config/local.json
+
 "db": "mongodb://localhost:27017/easymockdb",
 
 - build 
@@ -112,6 +113,7 @@ Deploying easy-mock in the intranet server
 
 - startup 
 > npm run dev
+
 DONE Compiled successfully in 476ms [start successfully]
 
 
@@ -129,4 +131,5 @@ DONE Compiled successfully in 476ms [start successfully]
 
 
 ** if you want to deploy it on virtual machine,some configurations is needed **
+
 [VMware]Edit->Virtual Network Editor->NAT（VMnet8）->Edit->Port Forwarding,add mapping host port：80，virtual machine IP address:xxx，Port：80
