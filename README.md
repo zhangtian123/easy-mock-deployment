@@ -1,7 +1,7 @@
 # easy-mock-deployment
 Deploying easy-mock in the intranet server
 
-** 环境搭建：nodejs-->v8.9.0,mongodb-->v3.4,redis-->v4.0.2 **
+* 环境搭建：nodejs-->v8.9.0,mongodb-->v3.4,redis-->v4.0.2 *
 
 
 # install nodejs
@@ -14,16 +14,16 @@ Deploying easy-mock in the intranet server
 > ln -s /usr/local/nodejs/bin/node /usr/local/bin
 > ln -s /usr/local/nodejs/bin/npm /usr/local/bin
 
-** test **
+* test *
 > node -v
 > npm -v
 
 
 # install mongodb
-** in case of errors during the installation,update your yum,it will take a long time **
+- in case of errors during the installation,update your yum,it will take a long time 
 > yum update
 
-** yum source with mongodb addition **
+- yum source with mongodb addition **
 > cd /etc/yum.repos.d/
 > vim mongodb-3.4.repo
 ** copy the following words to mongodb-3.4.repo,you can change gpgcheck to 0 to avoid gpg validation **
@@ -34,26 +34,26 @@ gpgcheck=1
 enabled=1 
 gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
 
-** install **
+- install **
 > yum install -y mongodb-org
 
-** create database storage and log folder **
+- create database storage and log folder **
 > mkdir /data
 > mkdir /data/db
 > mkdir /data/logs
 > mkdir /data/logs/mongodb
 > mkdir /data/logs/mongodb/logs
 
-** start mongodb **
+- start mongodb **
 > mongod --fork --logpath=/data/logs/mongodb/logs/mogondb.log
 
-** create database **
+- create database **
 > mongo
 > use easymockdb
 
 # Abnormal stop can cause startup error
-** repair：delete mongod.lock in /data/db and logs,then start mongodb in --repair way [😳failed,actually i don't know how to repair it]
-** uninstall-->reinstall **
+- repair：delete mongod.lock in /data/db and logs,then start mongodb in --repair way [😳failed,actually i don't know how to repair it]
+- uninstall-->reinstall 
 - delete mongod.lock in /data/db and logs
 > yum list installed | grep mongo [find installation packages related to mongodb]
 > yum erase XXX [delete related packages]
