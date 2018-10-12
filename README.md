@@ -1,7 +1,7 @@
 # easy-mock-deployment
 Deploying easy-mock in the intranet server
 
-# 环境搭建：nodejs-->v8.9.0,mongodb-->v3.4,redis-->v4.0.2 
+- 环境搭建：nodejs-->v8.9.0,mongodb-->v3.4,redis-->v4.0.2 
 
 
 # install nodejs
@@ -23,16 +23,16 @@ Deploying easy-mock in the intranet server
 - in case of errors during the installation,update your yum,it will take a long time 
 > yum update
 
-- yum source with mongodb addition **
+- yum source with mongodb addition 
 > cd /etc/yum.repos.d/
 > vim mongodb-3.4.repo
 - copy the following words to mongodb-3.4.repo,you can change gpgcheck to 0 to avoid gpg validation 
-[mongodb-org-3.4] 
-name=MongoDB Repository 
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/ 
-gpgcheck=1 
-enabled=1 
-gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
+>[mongodb-org-3.4] 
+>name=MongoDB Repository 
+>baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/ 
+>gpgcheck=1 
+>enabled=1 
+>gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
 
 - install 
 > yum install -y mongodb-org
