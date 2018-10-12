@@ -6,8 +6,11 @@ Deploying easy-mock in the intranet server
 
 # install nodejs
 > wget https://nodejs.org/dist/v8.9.0/node-v8.9.0-linux-x64.tar.gz
+
 > tar xf node-v8.9.0-linux-x64.tar.gz -C /usr/local/
+
 > cd /usr/local/
+
 > mv node-v8.9.0-linux-x64/ nodejs
 
 - create symbolic link 
